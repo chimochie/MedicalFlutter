@@ -1,4 +1,6 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:helloworld/pages/Home.dart';
 import 'list.dart';
 
 class AddToCart extends StatefulWidget {
@@ -268,7 +270,27 @@ class _AddToCartState extends State<AddToCart> {
                     color: Color(0xff639DC3),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      cart.clear();
+                      AwesomeDialog(
+                        context: context,
+                        animType: AnimType.TOPSLIDE,
+                        dialogType: DialogType.SUCCES,
+                        body: Center(
+                          child: Text(
+                            'CheckOut Succefully ;)',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                        ),
+                        title: 'This is Ignored',
+                        desc: 'This is also Ignored',
+                        btnOkColor: Color(0xff639DC3),
+                        btnOkOnPress: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+                        },
+                      )..show();
+                    },
                     child: Text(
                         'Check Out',
                       style: TextStyle(color: Colors.white,fontSize: 22),
